@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Image Detection</title>
+</head>
+<body>
+    <h1>Upload an Image for YOLO Detection</h1>
+    <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
+        <label for="file-input">Choose an image file:</label>
+        <input type="file" id="file-input" name="file" accept="image/*" title="Choose an image file" required>
+        <button type="submit">Upload and Predict</button>
+    </form>
+</body>
+</html>
