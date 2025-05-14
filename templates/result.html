@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+            width: 50%;
+            text-align: left;
+        }
+        .result-image, .annotated-image {
+            max-width: 100%;
+        }
+        .error-message {
+            color: red;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% else %}
+        {% if class_counts %}
+            <h2>Class Counts:</h2>
+            <ul>
+                {% for class_id, count in class_counts.items() %}
+                    <li>Class {{ class_id }} ({{ class_mapping[class_id] }}): {{ count }} instances</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No objects detected in the image.</p>
+        {% endif %}
+
+        {% if result_image %}
+            <img src="data:image/jpeg;base64,{{ result_image }}" alt="Result Image" class="annotated-image"/>
+        {% endif %}
+    {% endif %}
+
+    <a href="/">Go back to upload another image</a>
+
+</body>
+</html>
